@@ -9,15 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('countries', function (Blueprint $table) {
-            $table->integer('idm');
-            $table->string('country_code', 2)->default('');
-            $table->string('country_name', 100)->default('');
-            $table->integer('id', true);
+            $table->id();
+            $table->char('country_code', 2)->unique();
+            $table->string('country_name', 100);
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -11,9 +11,11 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "spatie/laravel-permission": "^6.17"
     },
     "require-dev": {
+        "beyondcode/laravel-er-diagram-generator": "^4.0",
         "fakerphp/faker": "^1.23",
         "kitloong/laravel-migrations-generator": "^7.1",
         "laravel/pail": "^1.1",

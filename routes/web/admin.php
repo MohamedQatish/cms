@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Settings\LanguageController;
 use App\Http\Controllers\Admin\Settings\PageController;
 use App\Http\Controllers\Admin\Settings\PaymentController;
 use App\Http\Controllers\Admin\Settings\ReviewController;
+use App\Http\Controllers\Admin\Settings\SliderController;
 use App\Http\Controllers\Admin\Settings\StoryController;
 use App\Http\Controllers\Admin\Settings\TopMenuController;
 use Illuminate\Support\Facades\App;
@@ -179,6 +180,11 @@ Route::prefix('/admin')->group(function () {
         });
 
 
+        Route::prefix('slider')->group(function () {
+            Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
+            Route::post('/', [SliderController::class, 'store'])->name('admin.slider.store');
+            Route::delete('/{id}', [SliderController::class, 'destroy'])->name('admin.top-menu.destroy');
+        });
 
 
 

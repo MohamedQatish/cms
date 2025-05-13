@@ -169,7 +169,7 @@
                 <ul class="collapse submenu list-unstyled {{ isset($submenu) && $submenu === 'home' ? 'show' : '' }}"
                     id="home" data-bs-parent="#accordionExample">
                     <li class="{{ Request::routeIs('slider') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}home/slider">{{ __('menu.slider') }}</a>
+                        <a  href="{{ route('admin.slider.index') }}">{{ __('menu.slider') }}</a>
                     </li>
                     <li class="{{ Request::routeIs('home-sections') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}home/sections">{{ __('menu.home_sections') }}</a>
