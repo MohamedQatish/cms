@@ -42,10 +42,17 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .translation-field {
+            flex: 1;
+            min-width: 200px;
         }
 
         .setting-form textarea {
             min-height: 80px;
+            width: 100%;
         }
 
         .img-preview {
@@ -81,31 +88,43 @@
                             <tbody>
                                 @foreach ($settings as $setting)
                                     <tr>
-                                        <td>{{ $setting->ar_name }}</td>
+                                        <td>{{ $setting->name }}</td>
                                         <td>
                                             @if ($setting->type == 0)
                                                 <form method="POST"
                                                     action="{{ route('admin.settings.update.post', $setting->id) }}"
-                                                    class="setting-form"> @method('PUT')@csrf
-                                                    <textarea name="content" class="form-control">{{ $setting->content }}</textarea>
-                                                    <button type="submit" class="btn btn-success btn-sm">{{ __('menu.save') }}</button>
+                                                    class="setting-form">
+                                                    @method('PUT')
+                                                    @csrf
+
+                                                    @foreach ($languages as $language)
+                                                        <div class="translation-field">
+                                                            <label>{{ $language->name }}
+                                                                ({{ strtoupper($language->shortcut) }})</label>
+                                                            <textarea name="content[{{ $language->shortcut }}]" class="form-control">{{ $setting->getTranslation('content', $language->shortcut) }}</textarea>
+                                                        </div>
+                                                    @endforeach
+
+                                                    <button type="submit"
+                                                        class="btn btn-success btn-sm">{{ __('menu.save') }}</button>
                                                 </form>
                                             @elseif($setting->type == 1)
                                                 <form method="POST"
                                                     action="{{ route('admin.settings.update.image.post', $setting->id) }}"
-                                                    enctype="multipart/form-data" class="setting-form"> @csrf
+                                                    enctype="multipart/form-data" class="setting-form">
+                                                    @csrf
                                                     @if ($setting->content)
                                                         <img src="{{ asset('storage/' . $setting->content) }}"
                                                             style="max-width: 300px; max-height: 200px; object-fit: contain; border: 1px solid #ddd; padding: 5px; border-radius: 4px;"
                                                             alt="{{ __('menu.setting_image') }}">
                                                     @endif
-
                                                     <input type="file" name="image" class="form-control-file">
-                                                    <button type="submit" class="btn btn-success btn-sm">{{ __('menu.upload') }}</button>
+                                                    <button type="submit"
+                                                        class="btn btn-success btn-sm">{{ __('menu.upload') }}</button>
                                                 </form>
-                                            @elseif($setting->type == 3)
                                             @endif
                                         </td>
+
                                         <td class="text-center">
                                             <span
                                                 class="badge badge-{{ $setting->type == 0 ? 'info' : ($setting->type == 1 ? 'warning' : 'success') }}">

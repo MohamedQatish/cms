@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->integer('id', true);
             $table->string('name', 1000);
-            $table->longText('content');
+            $table->json('content');
             $table->integer('ordering');
             $table->integer('type');
-            $table->string('ar_name', 1000);
         });
     }
 

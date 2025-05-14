@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Language;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,8 +13,9 @@ class InfoController extends Controller
     public function index()
     {
         $settings = Setting::orderBy('ordering')->get();
-
+        $languages = Language::all();
         return view('admin.settings.info', [
+            'languages' => $languages,
             'settings' => $settings,
             'catName' => 'tables',
             'title' => 'Bootstrap Tables',
@@ -22,12 +24,43 @@ class InfoController extends Controller
             'simplePage' => 0
         ]);
     }
+    public function show() {}
+
 
     public function update(Request $request, $id)
     {
+        // البحث عن الإعداد المطلوب
         $setting = Setting::findOrFail($id);
-        $setting->update(['content' => $request->content]);
-        return redirect()->route('admin.settings.index');
+
+        // التحقق من النوع
+        if ($setting->type == 0) {
+            // الحفظ للحقول النصية
+            $translations = $request->input('content');
+
+            // التحقق من وجود البيانات
+            if (is_array($translations)) {
+                foreach ($translations as $lang => $value) {
+                    $setting->setTranslation('content', $lang, $value);
+                }
+            }
+        } elseif ($setting->type == 1) {
+            // الحفظ للصور
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('settings', 'public');
+                $setting->content = $path;
+            }
+        }
+
+        // حفظ الإعداد
+        $setting->save();
+
+        // رسالة نجاح
+        return redirect()->back()->with('success', __('menu.setting_updated'));
+    }
+
+    public function getTranslatedContent($locale)
+    {
+        return $this->getTranslatedContent('en');
     }
 
     public function updateImage(Request $request, $id)

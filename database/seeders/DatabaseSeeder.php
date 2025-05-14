@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CountriesSeeder::class,
             EffectsSeeder::class,
             HomepageWidgetsSeeder::class,
+            SettingsSeeder::class
         ]);
     }
 }

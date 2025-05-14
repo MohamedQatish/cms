@@ -204,6 +204,12 @@ Route::prefix('/admin')->group(function () {
 
 
 
+        Route::prefix('languages')->group(function () {
+            Route::get('/', [LanguageController::class, 'index'])->name('admin.languages.index');
+            Route::get('/create', [LanguageController::class, 'create'])->name('admin.sliders.create');
+            Route::post('/', [LanguageController::class, 'store'])->name('admin.sliders.store');
+            Route::delete('/{id}', [LanguageController::class, 'destroy'])->name('admin.sliders.destroy');
+        });
 
 
 
