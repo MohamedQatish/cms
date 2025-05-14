@@ -10,8 +10,7 @@ class SliderController extends Controller
 {
     public function index()
     {
-        $sliders = Slider::all();
-
+        $sliders = Slider::latest()->get();
         return view('admin.settings.sliders', [
             'sliders' => $sliders,
             'catName' => 'tables',
@@ -20,5 +19,35 @@ class SliderController extends Controller
             'scrollspy' => 1,
             'simplePage' => 0
         ]);
+    }
+    public function create()
+    {
+        return view('admin.settings.slidersCreate', [
+            'title' => 'إضافة سلايدر جديد',
+            'catName' => 'tables',
+            'breadcrumbs' => ['الإعدادات', 'إضافة سلايدر'],
+            'scrollspy' => 1,
+            'simplePage' => 0
+        ]);
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('sliders', 'public');
+        }
+        Slider::create([
+            'image' => $imagePath,
+        ]);
+
+        return redirect()->route('admin.sliders.index')->with('success', 'تمت إضافة السلايدر بنجاح.');
+    }
+    public function destroy($id)
+    {
+        Slider::where('id', $id)->delete();
+        return redirect()->route('admin.sliders.index')->with('success', 'تم حذف السلايد بنجاح.');
     }
 }

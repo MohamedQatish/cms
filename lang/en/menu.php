@@ -74,7 +74,7 @@ return [
     'view' => 'View',
     'no_messages' => 'No messages found',
 
-     // Admin Management Page (admins.blade.php)
+    // Admin Management Page (admins.blade.php)
     // -------------------------------
     'admins_management' => 'Users Management',
     'add_new' => 'Add New',
@@ -108,4 +108,41 @@ return [
     'permissions_management' => 'Permissions Management',
     'available_permissions' => 'Available Permissions',
 
+    //slider
+    'no_opinions' => 'No opinions available',
+    'opinions' => 'Opinions',
+    'add' => 'Add New',
+    'opinions_count' => 'Opinions Count',
+    'data' => 'Data',
+    'specialization' => 'Specialization',
+    'content' => 'Content',
+    'controls' => 'Controls',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'delete_confirm' => 'Are you sure you want to delete this item?',
+
+    'manage_sliders' => 'Manage Sliders',
+    'add_new_slider' => 'Add New Slider',
+    'image' => 'Image',
+    'actions' => 'Actions',
+    'slider_image' => 'Slider Image',
+    'no_sliders_found' => 'No Sliders Found',
+
+
+    'home_sections'    => 'Home Sections',
+    'name'             => 'Name',
+    'customize'        => 'Customize',
+    'order'            => 'Order',
+    'effect'           => 'Effect',
+    'effect_duration'  => 'Effect Duration',
+    'style'            => 'Style',
+    'status'           => 'Status',
+    'edit_style'       => 'Edit Style',
+    'no_effect'        => 'No Effect',
+    'no_data'          => 'No Data',
+    'order_updated'    => 'Order Updated',
+    'effect_updated'   => 'Effect Updated',
+    'duration_updated' => 'Duration Updated',
+    'action_failed' => 'Action Failed Try Again!',
+'sliders_count' => 'Sliders Count',
 ];

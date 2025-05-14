@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
-            CountriesSeeder::class
+            CountriesSeeder::class,
+            EffectsSeeder::class,
+            HomepageWidgetsSeeder::class,
         ]);
     }
 }

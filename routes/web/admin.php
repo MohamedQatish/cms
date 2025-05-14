@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Settings\AdminController;
 use App\Http\Controllers\Admin\Settings\ClientController;
 use App\Http\Controllers\Admin\Settings\ContactUsController;
 use App\Http\Controllers\Admin\Settings\FaqsController;
+use App\Http\Controllers\Admin\Settings\HomepageWidgetController;
 use App\Http\Controllers\Admin\Settings\InfoController;
 use App\Http\Controllers\Admin\Settings\LanguageController;
 use App\Http\Controllers\Admin\Settings\PageController;
@@ -180,12 +181,26 @@ Route::prefix('/admin')->group(function () {
         });
 
 
-        Route::prefix('slider')->group(function () {
-            Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
-            Route::post('/', [SliderController::class, 'store'])->name('admin.slider.store');
-            Route::delete('/{id}', [SliderController::class, 'destroy'])->name('admin.top-menu.destroy');
+        Route::prefix('sliders')->group(function () {
+            Route::get('/', [SliderController::class, 'index'])->name('admin.sliders.index');
+            Route::get('/create', [SliderController::class, 'create'])->name('admin.sliders.create');
+            Route::post('/', [SliderController::class, 'store'])->name('admin.sliders.store');
+            Route::delete('/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.destroy');
         });
 
+        Route::prefix('homepage_widgets')->group(function () {
+            Route::get('/', [HomepageWidgetController::class, 'index'])->name('admin.homepage_widgets.index');
+            Route::get('/create', [HomepageWidgetController::class, 'create'])->name('admin.homepage_widgets.create');
+            Route::post('/', [HomepageWidgetController::class, 'store'])->name('admin.homepage_widgets.store');
+            Route::get('/{widget}/edit', [HomepageWidgetController::class, 'edit'])->name('admin.homepage_widgets.edit');
+            Route::put('/{widget}', [HomepageWidgetController::class, 'update'])->name('admin.homepage_widgets.update');
+            Route::delete('/{id}', [HomepageWidgetController::class, 'destroy'])->name('admin.homepage_widgets.destroy');
+
+            Route::post('/update-status', [HomepageWidgetController::class, 'updateStatus'])->name('admin.homepage_widgets.update_status');
+            Route::post('/change-ordering', [HomepageWidgetController::class, 'changeOrdering'])->name('admin.homepage_widgets.change_ordering');
+            Route::post('/change-effect', [HomepageWidgetController::class, 'changeEffect'])->name('admin.homepage_widgets.change_effect');
+            Route::post('/change-effect-duration', [HomepageWidgetController::class, 'changeEffectDuration'])->name('admin.homepage_widgets.change_effect_duration');
+        });
 
 
 

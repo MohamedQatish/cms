@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aos_effects', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('effect', 50)->unique('effect');
+        Schema::create('effects', function (Blueprint $table) {
+            $table->id();
+            $table->string('effect_name')->unique();
+            $table->timestamps();
         });
     }
 

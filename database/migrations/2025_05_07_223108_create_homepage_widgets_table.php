@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homepage_widgets', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('name', 1000);
-            $table->integer('active');
-            $table->string('file_name', 1000);
-            $table->integer('ordering');
-            $table->string('effect', 1000);
-            $table->string('duration', 100);
-            $table->string('settings', 5000);
+            $table->id();
+            $table->string('name', 255);
+            $table->boolean('active')->default(true);
+            $table->string('file_name', 255);
+            $table->unsignedInteger('ordering')->default(0);
+            $table->unsignedInteger('duration')->nullable()->default(null);
+            $table->foreignId('effect_id')->nullable()->constrained('effects')->nullOnDelete();
+            $table->json('settings')->nullable();
+            $table->timestamps();
         });
     }
 
