@@ -29,16 +29,16 @@ class HomepageWidgetsSeeder extends Seeder
                 'name' => 'خدماتنا',
                 'active' => true,
                 'file_name' => 'services',
-                'ordering' => 4,
+                'ordering' => 2,
                 'effect_id' => $effects['fade'] ?? null,
                 'duration' => null,
                 'settings' => '{}'
             ],
             [
                 'name' => 'العدادات',
-                'active' => false,
+                'active' => true,
                 'file_name' => 'counter_area',
-                'ordering' => 5,
+                'ordering' => 4,
                 'effect_id' => $effects['بدون حركة'] ?? null,
                 'duration' => null,
                 'settings' => '{}'
@@ -46,17 +46,17 @@ class HomepageWidgetsSeeder extends Seeder
             [
                 'name' => 'الآراء',
                 'active' => true,
-                'file_name' => 'testimonials',
-                'ordering' => 7,
+                'file_name' => 'feedback',
+                'ordering' => 5,
                 'effect_id' => $effects['fade-up'] ?? null,
                 'duration' => '20',
                 'settings' => '{}'
             ],
             [
                 'name' => 'المقالات',
-                'active' => false,
+                'active' => true,
                 'file_name' => 'blog',
-                'ordering' => 8,
+                'ordering' => 6,
                 'effect_id' => $effects['fade'] ?? null,
                 'duration' => null,
                 'settings' => '{}'
@@ -65,34 +65,34 @@ class HomepageWidgetsSeeder extends Seeder
                 'name' => 'الأسئلة الشائعة',
                 'active' => true,
                 'file_name' => 'faqs',
-                'ordering' => 9,
+                'ordering' => 7,
                 'effect_id' => $effects['flip-left'] ?? null,
                 'duration' => '1000',
                 'settings' => '{}'
             ],
             [
                 'name' => 'أهم الدورات',
-                'active' => false,
+                'active' => true,
                 'file_name' => 'popular_courses',
-                'ordering' => 0,
+                'ordering' => 3,
                 'effect_id' => $effects['zoom-in'] ?? null,
                 'duration' => null,
                 'settings' => '{}'
             ],
             [
                 'name' => 'معرض الصور',
-                'active' => false,
+                'active' => true,
                 'file_name' => 'gallary',
-                'ordering' => 10,
+                'ordering' => 16,
                 'effect_id' => $effects['zoom-in-up'] ?? null,
                 'duration' => '5000',
                 'settings' => '{}'
             ],
             [
                 'name' => 'عملاؤنا',
-                'active' => false,
+                'active' => true,
                 'file_name' => 'partners',
-                'ordering' => 3,
+                'ordering' => 17,
                 'effect_id' => $effects['fade-left'] ?? null,
                 'duration' => null,
                 'settings' => '{}'
@@ -101,14 +101,14 @@ class HomepageWidgetsSeeder extends Seeder
                 'name' => 'الخريطة',
                 'active' => true,
                 'file_name' => 'map',
-                'ordering' => 10,
+                'ordering' => 19,
                 'effect_id' => $effects['zoom-out'] ?? null,
                 'duration' => null,
                 'settings' => '{}'
             ],
             [
                 'name' => 'اتصل بنا',
-                'active' => false,
+                'active' => true,
                 'file_name' => 'contact_us',
                 'ordering' => 20,
                 'effect_id' => $effects['flip-up'] ?? null,
@@ -117,9 +117,9 @@ class HomepageWidgetsSeeder extends Seeder
             ],
             [
                 'name' => 'من نحن',
-                'active' => false,
+                'active' => true,
                 'file_name' => 'about_us',
-                'ordering' => 1,
+                'ordering' => 18,
                 'effect_id' => $effects['fade-up'] ?? null,
                 'duration' => null,
                 'settings' => '{"file_type":"", "url":""}'

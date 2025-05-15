@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
-class ServicesTableSeeder extends Seeder
+class ServicesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class ServicesTableSeeder extends Seeder
     {
         DB::table('services')->insert([
             [
-                'icon' => 'icon_services.png', // تعيين الأيقونة هنا
+                'icon' => 'frontend/seed/services/icon_services.png',
                 'ar_name' => 'بناء المواقع الالكترونية',
                 'en_name' => 'Building websites',
                 'fr_name' => 'Erstellen von Websites',
@@ -28,7 +28,7 @@ class ServicesTableSeeder extends Seeder
                 'de_content' => 'Wir bieten einen professionellen Service zur Erstellung von Websites mit einzigartigem Design und einem reibungslosen Benutzererlebnis.',
             ],
             [
-                'icon' => 'icon_services.png', // تعيين الأيقونة هنا
+                'icon' => 'frontend/seed/services/icon_services.png',
                 'ar_name' => 'التسويق الرقمي',
                 'en_name' => 'Digital marketing',
                 'fr_name' => 'Digitales Marketing',
@@ -41,7 +41,7 @@ class ServicesTableSeeder extends Seeder
                 'de_content' => 'Wir bieten innovative und umfassende Werbekampagnendienste. Von der Strategie bis zum Design sind wir für Sie da, um Ihre Werbeziele effizient zu erreichen.',
             ],
             [
-                'icon' => 'icon_services.png', // تعيين الأيقونة هنا
+                'icon' => 'frontend/seed/services/icon_services.png',
                 'ar_name' => 'SEO',
                 'en_name' => 'SEO',
                 'fr_name' => 'SEO',

@@ -18,7 +18,13 @@ class DatabaseSeeder extends Seeder
             CountriesSeeder::class,
             EffectsSeeder::class,
             HomepageWidgetsSeeder::class,
-            SettingsSeeder::class
+            SettingsSeeder::class,
+            FaqsSeeder::class,
+            LanguagesTableSeeder::class,
+            ServicesSeeder::class,
+            ClientsSeeder::class,
+            StoriesSeeder::class,
+            BlogSeeder::class,
         ]);
     }
 }

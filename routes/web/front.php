@@ -12,5 +12,7 @@ use App\Http\Controllers\Frontend\{
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+    Route::get('/change-language', 'changeLanguage')->name('change.language');
+
 
 });

@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
-class FaqsTableSeeder extends Seeder
+class FaqsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class FaqsTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('faqs')->insert([
-            // سؤال متعلق بـ "بناء المواقع الإلكترونية"
             [
                 'ar_qs' => 'ما هي عملية بناء المواقع الإلكترونية؟',
                 'en_qs' => 'What is the website development process?',
@@ -46,7 +45,6 @@ class FaqsTableSeeder extends Seeder
                 'sw_qs' => 'Jinsi gani masoko ya dijitali hufanya kazi?',
                 'sw_answer' => 'Masoko ya dijitali yanahusisha matumizi ya mtandao na mitandao ya kijamii kufikia wateja waliolengwa kupitia matangazo na maudhui.',
             ],
-            // سؤال متعلق بـ "SEO"
             [
                 'ar_qs' => 'ما هو تحسين محركات البحث (SEO)؟',
                 'en_qs' => 'What is SEO (Search Engine Optimization)?',
@@ -62,7 +60,6 @@ class FaqsTableSeeder extends Seeder
                 'sw_qs' => 'Nini SEO (Uboreshaji wa Injini za Utafutaji)?',
                 'sw_answer' => 'SEO ni mchakato wa kuboresha tovuti ili kuongeza mwonekano wake katika matokeo ya injini za utafutaji kama Google.',
             ],
-            // سؤال متعلق بـ "تصميم الجرافيك"
             [
                 'ar_qs' => 'ما هي خدمات تصميم الجرافيك؟',
                 'en_qs' => 'What are graphic design services?',
