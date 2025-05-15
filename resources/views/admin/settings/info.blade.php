@@ -88,7 +88,7 @@
                             <tbody>
                                 @foreach ($settings as $setting)
                                     <tr>
-                                        <td>{{ $setting->name }}</td>
+                                        <td>{{ __('menu.' . $setting->name) }}</td>
                                         <td>
                                             @if ($setting->type == 0)
                                                 <form method="POST"
@@ -100,7 +100,8 @@
                                                     @foreach ($languages as $language)
                                                         <div class="translation-field">
                                                             <label>{{ $language->name }}
-                                                                ({{ strtoupper($language->shortcut) }})</label>
+                                                                ({{ strtoupper($language->shortcut) }})
+                                                            </label>
                                                             <textarea name="content[{{ $language->shortcut }}]" class="form-control">{{ $setting->getTranslation('content', $language->shortcut) }}</textarea>
                                                         </div>
                                                     @endforeach

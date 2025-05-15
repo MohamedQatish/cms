@@ -16,7 +16,7 @@
                     </a>
                 </div>
                 <div class="nav-item theme-text">
-                    <a href="{{ getRouterValue() }}dashboard/analytics" class="nav-link"> Admin </a>
+                    <a href="{{ getRouterValue() }}dashboard" class="nav-link"> Admin </a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">
@@ -43,7 +43,6 @@
             </div>
         </div>
 
-        <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu {{ $catName === 'dashboard' ? 'active' : '' }}">
                 <a href="#dashboard" class="dropdown-toggle">
@@ -93,7 +92,7 @@
                         <a href="{{ route('admin.pages.index') }}">{{ __('menu.pages') }}</a>
                     </li>
                     <li class="{{ Request::routeIs('languages') ? 'active' : '' }}">
-                        <a href="{{ route('admin.language.index') }}">{{ __('menu.languages') }}</a>
+                        <a href="{{ route('admin.languages.index') }}">{{ __('menu.languages') }}</a>
                     </li>
                     <li class="{{ Request::routeIs('faq') ? 'active' : '' }}">
                         <a href="{{ route('admin.faqs.index') }}">{{ __('menu.faq') }}</a>

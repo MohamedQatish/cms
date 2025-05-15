@@ -57,9 +57,9 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
-    
+
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
         <div class="widget widget-card-four">
             <div class="widget-content">
@@ -87,10 +87,10 @@
                     <div class="w-info">
                         <p class="value">$ 45,141 <span>this week</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></p>
                     </div>
-                    
+
                 </div>
 
-                <div class="w-progress-stats">                                            
+                <div class="w-progress-stats">
                     <div class="progress">
                         <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -100,12 +100,12 @@
                             <p>57%</p>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
         <div class="widget widget-card-five">
             <div class="widget-content">
@@ -187,7 +187,7 @@
 
                 <div class="mt-container mx-auto">
                     <div class="timeline-line">
-                        
+
                         <div class="item-timeline timeline-new">
                             <div class="t-dot">
                                 <div class="t-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
@@ -260,8 +260,8 @@
                                 </div>
                                 <p>10 Apr, 2022</p>
                             </div>
-                        </div>                                      
-                    </div>                                    
+                        </div>
+                    </div>
                 </div>
 
                 <div class="w-shadow-bottom"></div>
@@ -298,7 +298,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-compass"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
                         </div>
                         <div class="w-browser-details">
-                            
+
                             <div class="w-browser-info">
                                 <h6>Safari</h6>
                                 <p class="browser-count">25%</p>
@@ -319,7 +319,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         </div>
                         <div class="w-browser-details">
-                            
+
                             <div class="w-browser-info">
                                 <h6>Others</h6>
                                 <p class="browser-count">15%</p>
@@ -334,7 +334,7 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -356,7 +356,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="widget-content">    
+                    <div class="widget-content">
                         <div class="w-chart">
                             <div id="hybrid_followers"></div>
                         </div>
@@ -376,7 +376,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="widget-content">    
+                    <div class="widget-content">
                         <div class="w-chart">
                             <div id="hybrid_followers1"></div>
                         </div>
@@ -396,7 +396,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="widget-content">    
+                    <div class="widget-content">
                         <div class="w-chart">
                             <div id="hybrid_followers3"></div>
                         </div>
@@ -421,7 +421,7 @@
 
                         <h5>Figma Design</h5>
                         <span>Design Project</span>
-                        
+
                     </div>
 
                 </a>
@@ -439,10 +439,10 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-            
-            
+
+
             <div class="widget-content">
 
                 <p>Doloribus nisi vel suscipit modi, optio ex repudiandae voluptatibus officiis commodi.</p>
@@ -453,11 +453,11 @@
                         <div class="task-count"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><p>5 Tasks</p></div>
                         <div class="progress-stats"><p>86.2%</p></div>
                     </div>
-                    
+
                     <div class="progress">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    
+
                 </div>
 
                 <div class="meta-info">
@@ -481,11 +481,11 @@
                         <div class="avatar translateY-axis">
                             <img alt="avatar" src="{{Vite::asset('resources/images/profile-19.jpeg')}}"/>
                         </div>
-                        
+
                     </div>
 
                 </div>
-                
+
 
             </div>
 

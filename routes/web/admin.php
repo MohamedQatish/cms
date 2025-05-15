@@ -47,13 +47,15 @@ Route::prefix('/admin')->group(function () {
         );
     })->name('login');
 
-    Route::get('/dashboard', function () {
-        return redirect(getRouterValue() . 'dashboard/analytics');
-    })->name('dashboard');
 
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+    Route::get('/login', [LoginController::class, 'index']);
     Route::post('/login/check', [LoginController::class, 'check'])->name('login.check');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+
 
 
     Route::prefix('/settings')->group(function () {
@@ -98,13 +100,6 @@ Route::prefix('/admin')->group(function () {
             Route::post('/useful-links', [PageController::class, 'toggleUsefulLinks'])->name('admin.pages.useful-links');
             Route::post('/top-menu', [PageController::class, 'toggleTopMenu'])->name('admin.pages.top-menu');
             Route::post('/change-ordering', [PageController::class, 'changeOrdering'])->name('admin.pages.change-ordering');
-        });
-
-
-        Route::prefix('/language')->group(function () {
-            Route::get('/', [LanguageController::class, 'index'])->name('admin.language.index');
-            Route::get('/{lang}/edit', [LanguageController::class, 'edit'])->name('admin.language.edit');
-            Route::put('/{lang}', [LanguageController::class, 'update'])->name('admin.language.update');
         });
 
 
@@ -202,54 +197,19 @@ Route::prefix('/admin')->group(function () {
             Route::post('/change-effect-duration', [HomepageWidgetController::class, 'changeEffectDuration'])->name('admin.homepage_widgets.change_effect_duration');
         });
 
-
-
         Route::prefix('languages')->group(function () {
             Route::get('/', [LanguageController::class, 'index'])->name('admin.languages.index');
-            Route::get('/create', [LanguageController::class, 'create'])->name('admin.sliders.create');
-            Route::post('/', [LanguageController::class, 'store'])->name('admin.sliders.store');
-            Route::delete('/{id}', [LanguageController::class, 'destroy'])->name('admin.sliders.destroy');
+            Route::get('/create', [LanguageController::class, 'create'])->name('admin.languages.create');
+            Route::post('/', [LanguageController::class, 'store'])->name('admin.languages.store');
+            Route::delete('/{id}', [LanguageController::class, 'destroy'])->name('admin.languages.destroy');
+
+
+            Route::patch('/{id}/toggle-active', [LanguageController::class, 'toggleActive'])
+                ->name('admin.settings.languages.toggle.active');
+
+            Route::patch('/{id}/toggle-main', [LanguageController::class, 'toggleMain'])
+                ->name('admin.settings.languages.toggle.main');
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        Route::get('/languages', function () {
-            return view(
-                'admin/languages',
-                [
-                    'catName' => 'tables',
-                    'title' => 'Bootstrap Tables',
-                    "breadcrumbs" => ["Tables", "Bootstrap"],
-                    'scrollspy' => 1,
-                    'simplePage' => 0
-                ]
-            );
-        })->name('languages');
     });
 
 
@@ -312,9 +272,9 @@ Route::prefix('/admin')->group(function () {
  * =======================
  */
 Route::prefix('dashboard')->group(function () {
-    Route::get('/analytics', function () {
+    Route::get('/', function () {
         return view(
-            'admin/dashboard/analytics',
+            'admin/settings/analytics',
             [
                 'catName' => 'dashboard',
                 'title' => 'CORK Admin - Multipurpose Bootstrap Dashboard Template',

@@ -20,48 +20,48 @@ class InfoController extends Controller
             'catName' => 'tables',
             'title' => 'Bootstrap Tables',
             'breadcrumbs' => ["Tables", "Bootstrap"],
-            'scrollspy' => 1,
+            'scrollspy' => 0,
             'simplePage' => 0
         ]);
+
     }
-    public function show() {}
 
 
     public function update(Request $request, $id)
     {
-        // البحث عن الإعداد المطلوب
         $setting = Setting::findOrFail($id);
 
-        // التحقق من النوع
         if ($setting->type == 0) {
-            // الحفظ للحقول النصية
             $translations = $request->input('content');
 
-            // التحقق من وجود البيانات
             if (is_array($translations)) {
                 foreach ($translations as $lang => $value) {
                     $setting->setTranslation('content', $lang, $value);
                 }
             }
         } elseif ($setting->type == 1) {
-            // الحفظ للصور
             if ($request->hasFile('image')) {
                 $path = $request->file('image')->store('settings', 'public');
                 $setting->content = $path;
             }
         }
 
-        // حفظ الإعداد
         $setting->save();
 
-        // رسالة نجاح
         return redirect()->back()->with('success', __('menu.setting_updated'));
     }
 
-    public function getTranslatedContent($locale)
+    public function getTranslatedContent()
     {
-        return $this->getTranslatedContent('en');
+        app()->setlocale('en');
+        $setting = Setting::find(1);
+        if ($setting) {
+            echo $setting->getTranslation('content', app()->getLocale());
+        } else {
+            echo 'Setting not found.';
+        }
     }
+
 
     public function updateImage(Request $request, $id)
     {
