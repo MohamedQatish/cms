@@ -13,7 +13,7 @@ class ClientController extends Controller
         $clients = Client::orderBy('id', 'desc')->get();
         return view('admin.settings.clients', [
             'clients' => $clients,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'إدارة المديرين',
             'breadcrumbs' => ['الإعدادات', 'إدارة المديرين'],
             'scrollspy' => 1,

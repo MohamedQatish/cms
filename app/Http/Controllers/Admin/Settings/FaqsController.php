@@ -20,7 +20,7 @@ class FaqsController extends Controller
             [
                 'languages' => $languages,
                 'faqs' => $faqs,
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'Bootstrap Tables',
                 "breadcrumbs" => ["Tables", "Bootstrap"],
                 'scrollspy' => 1,

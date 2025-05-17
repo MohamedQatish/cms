@@ -19,7 +19,7 @@ class AdminController extends Controller
 
         return view('admin.settings.admins', [
             'users' => $users,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'إدارة المديرين',
             'breadcrumbs' => ['الإعدادات', 'إدارة المديرين'],
             'scrollspy' => 1,
@@ -33,7 +33,7 @@ class AdminController extends Controller
 
         return view('admin.settings.adminsCreate', [
             'menu' => $menu,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'إضافة مدير جديد',
             'breadcrumbs' => ['الإعدادات', 'إدارة المديرين', 'إضافة جديد'],
             'scrollspy' => 1,
@@ -87,7 +87,7 @@ class AdminController extends Controller
             'user' => $user,
             'menu' => $menu,
             'userPermissions' => $userPermissions,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'تعديل مدير',
             'breadcrumbs' => ['الإعدادات', 'إدارة المديرين', 'تعديل'],
             'scrollspy' => 1,

@@ -21,7 +21,7 @@ class ReviewController extends Controller
             'admin.settings.reviews',
             [
                 'reviews' => $reviews,
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'رسائل التواصل',
                 'breadcrumbs' => ['الإعدادات', 'رسائل التواصل'],
                 'scrollspy' => 1,

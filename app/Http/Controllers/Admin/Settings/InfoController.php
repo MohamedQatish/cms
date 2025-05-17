@@ -17,7 +17,7 @@ class InfoController extends Controller
         return view('admin.settings.info', [
             'languages' => $languages,
             'settings' => $settings,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'Bootstrap Tables',
             'breadcrumbs' => ["Tables", "Bootstrap"],
             'scrollspy' => 0,

@@ -26,7 +26,7 @@ class PaymentController extends Controller
 
         return view('admin.settings.payments', [
             'payments' => $payments,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'إدارة المديرين',
             'breadcrumbs' => ['الإعدادات', 'إدارة المديرين'],
             'scrollspy' => 1,
@@ -36,7 +36,7 @@ class PaymentController extends Controller
     public function create()
     {
         return view('admin.settings.paymentsEdit', [
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'Bootstrap Tables',
             'breadcrumbs' => ['Tables', 'Bootstrap'],
             'scrollspy' => 1,
@@ -52,7 +52,7 @@ class PaymentController extends Controller
 
         return view('admin.settings.paymentsCreate', [
             'payment' => $payment,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'تعديل الدفعة',
             'breadcrumbs' => ['الدفعات', 'تعديل'],
             'scrollspy' => 1,

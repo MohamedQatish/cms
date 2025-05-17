@@ -15,7 +15,7 @@ class ContactUsController extends Controller
             'admin.settings.contact_us',
             [
                 'messages' => $messages,
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'رسائل التواصل',
                 'breadcrumbs' => ['الإعدادات', 'رسائل التواصل'],
                 'scrollspy' => 1,
@@ -36,7 +36,7 @@ class ContactUsController extends Controller
             'admin.settings.contact_usShow',
             [
                 'message' => $message,
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'عرض الرسالة',
                 'breadcrumbs' => ['الإعدادات', 'عرض الرسالة'],
                 'scrollspy' => 1,

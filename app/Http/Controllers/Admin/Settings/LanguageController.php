@@ -14,7 +14,7 @@ class LanguageController extends Controller
         $languages = Language::all();
         return view('admin.settings.languages', [
             'languages' => $languages,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'language',
             'breadcrumbs' => ["Tables", "Bootstrap"],
             'scrollspy' => 1,
@@ -24,7 +24,7 @@ class LanguageController extends Controller
     public function create()
     {
         return view('admin.settings.languagesCreate', [
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'language',
             'breadcrumbs' => ["Tables", "Bootstrap"],
             'scrollspy' => 1,

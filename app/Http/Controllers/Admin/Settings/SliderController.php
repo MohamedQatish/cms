@@ -13,7 +13,7 @@ class SliderController extends Controller
         $sliders = Slider::latest()->get();
         return view('admin.settings.sliders', [
             'sliders' => $sliders,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'إدارة المديرين',
             'breadcrumbs' => ['الإعدادات', 'إدارة المديرين'],
             'scrollspy' => 1,
@@ -24,7 +24,7 @@ class SliderController extends Controller
     {
         return view('admin.settings.slidersCreate', [
             'title' => 'إضافة سلايدر جديد',
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'breadcrumbs' => ['الإعدادات', 'إضافة سلايدر'],
             'scrollspy' => 1,
             'simplePage' => 0

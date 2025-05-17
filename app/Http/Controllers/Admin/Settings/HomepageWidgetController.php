@@ -17,7 +17,7 @@ class HomepageWidgetController extends Controller
         return view('admin.settings.homepage_widgets', [
             'effects' => $effects,
             'homepageWidgets' => $homepageWidgets,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'إدارة أقسام الصفحة الرئيسية',
             'breadcrumbs' => ['الإعدادات', 'إدارة أقسام الصفحة الرئيسية'],
             'scrollspy' => 1,

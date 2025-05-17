@@ -13,7 +13,7 @@ class TopMenuController extends Controller
         $topMenus = TopMenu::ALL();
         return view('admin.settings.topMenus', [
             'topMenus' => $topMenus,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'إدارة المديرين',
             'breadcrumbs' => ['الإعدادات', 'إدارة المديرين'],
             'scrollspy' => 1,

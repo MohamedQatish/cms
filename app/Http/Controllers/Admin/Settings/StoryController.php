@@ -19,7 +19,7 @@ class StoryController extends Controller
             'admin.settings.stories',
             [
                 'stories' => $story,
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'Bootstrap Tables',
                 "breadcrumbs" => ["Tables", "Bootstrap"],
                 'scrollspy' => 1,
@@ -33,7 +33,7 @@ class StoryController extends Controller
         return view(
             'admin.settings.storiesCreate',
             [
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'Bootstrap Tables',
                 "breadcrumbs" => ["Tables", "Bootstrap"],
                 'scrollspy' => 1,
@@ -71,7 +71,7 @@ class StoryController extends Controller
             'admin.settings.storiesEdit',
             [
                 'story' => $story,
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'Bootstrap Tables',
                 "breadcrumbs" => ["Tables", "Bootstrap"],
                 'scrollspy' => 1,

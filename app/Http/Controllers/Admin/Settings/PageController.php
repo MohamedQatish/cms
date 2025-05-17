@@ -20,7 +20,7 @@ class PageController extends Controller
             [
                 'pages' => $pages,
                 'languages' => $language,
-                'catName' => 'tables',
+                'catName' => 'dashboard',
                 'title' => 'Bootstrap Tables',
                 "breadcrumbs" => ["Tables", "Bootstrap"],
                 'scrollspy' => 1,
@@ -38,7 +38,7 @@ class PageController extends Controller
         return view('admin.settings.pagesCreate', [
             'pages' => $pages,
             'languages' => $languages,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'Bootstrap Tables',
             'breadcrumbs' => ['Tables', 'Bootstrap'],
             'scrollspy' => 1,
@@ -87,7 +87,7 @@ class PageController extends Controller
             'page' => $page,
             'languages' => $languages,
             'parentPages' => $parentPages,
-            'catName' => 'tables',
+            'catName' => 'dashboard',
             'title' => 'Bootstrap Tables',
             "breadcrumbs" => ["Tables", "Bootstrap"],
             'scrollspy' => 1,
