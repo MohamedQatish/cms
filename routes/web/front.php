@@ -16,3 +16,13 @@ Route::controller(HomeController::class)->group(function () {
 
 
 });
+
+
+
+Route::get('/change-language/{lang}', function ($lang) {
+    $activeLangs = \App\Models\Language::where('active', true)->pluck('shortcut')->toArray();
+    if (in_array($lang, $activeLangs)) {
+        session(['locale' => $lang]);
+    }
+    return redirect()->back();
+})->name('language.change');

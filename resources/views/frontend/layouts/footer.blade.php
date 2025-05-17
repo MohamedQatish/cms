@@ -1,6 +1,6 @@
-
+{{--
 <!-- Footer Area -->
-    <footer class="footer-area">
+<footer class="footer-area">
     <div class="container pt-100 pb-70">
             <div class="row">
             <div class="col-lg-3 col-sm-6">
@@ -141,4 +141,108 @@
         </div>
     </div>
     </footer>
+<!-- Footer Area End --> --}}
+
+
+<!-- Footer Area -->
+<footer class="footer-area">
+    <div class="container pt-100 pb-70">
+        <div class="row">
+
+            <!-- Logo & About -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="footer-widget">
+                    <div class="footer-logo">
+                        <a href="{{ url('/') }}">
+                            <img src="{{ asset(setting('footer_logo')) }}" alt="Logo">
+                        </a>
+                    </div>
+                    <p>{{ setting('about_us') }}</p>
+                    <ul class="social-link">
+                        <li class="social-title">{{ __('Follow Us:') }}</li>
+                        @if(setting('facebook'))
+                            <li><a href="{{ setting('facebook') }}"><i class="ri-facebook-fill"></i></a></li>
+                        @endif
+                        @if(setting('twitter'))
+                            <li><a href="{{ setting('twitter') }}"><i class="ri-twitter-fill"></i></a></li>
+                        @endif
+                        @if(setting('instegram'))
+                            <li><a href="{{ setting('instegram') }}"><i class="ri-instagram-line"></i></a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+
+            <!-- About links -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="footer-widget ps-5">
+                    <h3>{{ __('About us') }}</h3>
+                    <ul class="footer-list">
+                        <li><a href="{{ url('/about') }}">{{ __('About Us') }}</a></li>
+                        <li><a href="{{ url('/signup') }}">{{ __('Instructor Registration') }}</a></li>
+                        <li><a href="{{ url('/instructors') }}">{{ __('Instructors') }}</a></li>
+                        <li><a href="{{ url('/event') }}">{{ __('Our Event') }}</a></li>
+                        <li><a href="{{ url('/courses') }}">{{ __('Courses List') }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="footer-widget ps-5">
+                    <h3>{{ __('Resources') }}</h3>
+                    <ul class="footer-list">
+                        <li><a href="{{ url('/') }}">{{ __('Home') }}</a></li>
+                        <li><a href="{{ url('/courses') }}">{{ __('Courses') }}</a></li>
+                        <li><a href="{{ url('/blog') }}">{{ __('Our Blog') }}</a></li>
+                        <li><a href="{{ url('/terms-condition') }}">{{ __('Terms & Conditions') }}</a></li>
+                        <li><a href="{{ url('/privacy-policy') }}">{{ __('Privacy Policy') }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Official Info -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="footer-widget ps-5">
+                    <h3>{{ __('Official Info') }}</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="ri-map-pin-2-fill"></i>
+                            <div class="content">
+                                <h4>{{ __('Location:') }}</h4>
+                                <span>{{ setting('address') }}</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ri-mail-fill"></i>
+                            <div class="content">
+                                <h4>{{ __('Email:') }}</h4>
+                                <span><a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ri-phone-fill"></i>
+                            <div class="content">
+                                <h4>{{ __('Phone:') }}</h4>
+                                <span><a href="tel:{{ setting('phone') }}">{{ setting('phone') }}</a></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="copyright-area">
+        <div class="container">
+            <div class="copy-right-text text-center">
+                <p>
+                    &copy; {{ now()->year }} <b>{{ setting('site_name') }}</b> — All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 <!-- Footer Area End -->
