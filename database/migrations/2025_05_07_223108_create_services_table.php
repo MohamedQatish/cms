@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('background_image', 1000);
             $table->string('link', 1000);
             $table->timestamps();
-
         });
     }
 

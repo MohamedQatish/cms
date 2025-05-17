@@ -12,11 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('name', 1000);
-            $table->json('content');
-            $table->integer('ordering');
-            $table->integer('type');
+            $table->id();
+            $table->string('name', 255);
+            $table->json('content')->nullable();
+            $table->integer('ordering')->default(0);
+            $table->tinyInteger('type')->unsigned();
+            $table->timestamps();
+
+            $table->index('ordering');
+            $table->index('type');
         });
     }
 

@@ -177,7 +177,7 @@
                     <a href="{{ route('admin.homepage_widgets.index') }}">{{ __('menu.home_sections') }}</a>
                 </li>
                 <li class="{{ Request::routeIs('our-services') ? 'active' : '' }}">
-                    <a href="{{ getRouterValue() }}home/our-services">{{ __('menu.our_services') }}</a>
+                    <a href="{{ route('admin.services.index') }}">{{ __('menu.our_services') }}</a>
                 </li>
                 <li class="{{ Request::routeIs('image-gallery') ? 'active' : '' }}">
                     <a href="{{ getRouterValue() }}home/image-gallery">{{ __('menu.image_gallery') }}</a>

@@ -18,5 +18,13 @@ class Service extends Model
     ];
 
     public $translatable = ['name', 'content'];
+    public function getName($locale)
+    {
+        return json_decode($this->name, true)[$locale] ?? '';
+    }
 
+    public function getContent($locale)
+    {
+        return json_decode($this->content, true)[$locale] ?? '';
+    }
 }

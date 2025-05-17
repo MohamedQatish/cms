@@ -96,10 +96,8 @@ class LanguageController extends Controller
         try {
             DB::beginTransaction();
 
-            // إلغاء تحديد أي لغة رئيسية حالية
             Language::where('main', true)->update(['main' => false]);
 
-            // تحديد اللغة الجديدة كرئيسية
             $language = Language::findOrFail($id);
             $language->update(['main' => true]);
 

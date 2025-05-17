@@ -197,5 +197,6 @@ return [
     'footer_logo' => 'Footer Logo',
     'login_image' => 'Login Image',
     'buttons_border_radius' => 'Buttons Border Radius',
-
+    'edit_page' => 'Edit Page',
+    'add_page'=>'Add Page',
 ];

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ClientsSeeder::class,
             StoriesSeeder::class,
             BlogSeeder::class,
+            PagesSeeder::class
         ]);
     }
 }

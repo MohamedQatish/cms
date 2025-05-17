@@ -12,22 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('title', 2100);
-            $table->string('ar_name', 1000);
-            $table->longText('ar_content');
-            $table->string('en_name', 1000);
-            $table->string('de_name', 2000);
-            $table->longText('en_content');
-            $table->longText('de_content');
-            $table->integer('useful_links');
-            $table->integer('top_menu');
-            $table->integer('parent_id');
-            $table->integer('ordering');
-            $table->string('tr_name', 1000);
-            $table->longText('tr_content');
-            $table->string('sw_name', 1000);
-            $table->longText('sw_content');
+            $table->id();
+            $table->json('name');
+            $table->json('content');
+
+            $table->string('title')->nullable();
+            $table->integer('useful_links')->default(0);
+            $table->boolean('top_menu')->default(false);
+            $table->unsignedBigInteger('parent_id')->nullable()->default(null);
+            $table->integer('ordering')->default(0);
+
+            $table->timestamps();
         });
     }
 

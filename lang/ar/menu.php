@@ -182,5 +182,7 @@ return [
     'footer_logo' => 'شعار الفوتر',
     'login_image' => 'صورة تسجيل الدخول',
     'buttons_border_radius' => 'تقويس حدود الأزرار',
+    'edit_page' => 'تعديل الصفحة ',
+    'add_page'=>'اضافة صفحة '
 
 ];

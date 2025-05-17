@@ -30,9 +30,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                @foreach ($languages as $language)
-                                    <th>{{ $language->name }}</th>
-                                @endforeach
+                                <th>{{ __('menu.name') }}</th>
                                 <th>{{ __('menu.useful_links') }}</th>
                                 <th>{{ __('menu.top_menu') }}</th>
                                 <th>{{ __('menu.ordering') }}</th>
@@ -43,9 +41,9 @@
                             @foreach ($pages as $page)
                                 <tr>
                                     <td>{{ $page->id }}</td>
-                                    @foreach ($languages as $language)
-                                        <td>{{ $page[$language->shortcut . '_name'] }}</td>
-                                    @endforeach
+
+                                    <td>{{ $page->getTranslation('name', 'ar') }}</td>
+
                                     <td>
                                         <input type="checkbox" @if ($page->useful_links) checked @endif
                                             class="js-switch"
@@ -96,20 +94,18 @@
 
         function toggleUsefulLink(id, value) {
             $.post("{{ route('admin.pages.useful-links') }}", {
-                    id: id,
-                    value: value,
-                    _token: "{{ csrf_token() }}"
-                })
-                .done(function(response) {
-                    if (response.success) {
-                        alert(response.message || '{{ __('menu.useful_links_updated') }}');
-                    } else {
-                        alert('{{ __('menu.update_failed') }}');
-                    }
-                })
-                .fail(function() {
-                    alert('{{ __('menu.update_error') }}');
-                });
+                id: id,
+                value: value,
+                _token: "{{ csrf_token() }}"
+            }).done(function(response) {
+                if (response.success) {
+                    alert(response.message || '{{ __('menu.useful_links_updated') }}');
+                } else {
+                    alert('{{ __('menu.update_failed') }}');
+                }
+            }).fail(function() {
+                alert('{{ __('menu.update_error') }}');
+            });
         }
 
         function toggleTopMenu(id, value) {

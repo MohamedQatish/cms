@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
         //هذا لجعل $languages متاح في كل الـ Blade تلقائيًا.
         view()->share('languages', Language::where('active', true)->get());
         App::setLocale(session('locale', config('app.locale')));
-        \View::composer('*', function ($view) {
-            $view->with('settings', Setting::pluck('content', 'name')->toArray());
-        });
+        // \View::composer('*', function ($view) {
+        //     $view->with('settings', Setting::pluck('content', 'name')->toArray());
+        // });
     }
 }

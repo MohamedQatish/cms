@@ -13,7 +13,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::all();
-        $language = Language::all();
+        $language = Language::where('active', true)->get();
 
         return view(
             'admin.settings.pages',
@@ -33,7 +33,7 @@ class PageController extends Controller
     {
 
         $pages = Page::all();
-        $languages = Language::where('active', 1)->get();
+        $languages = Language::getActiveLanguages();
 
         return view('admin.settings.pagesCreate', [
             'pages' => $pages,
@@ -49,39 +49,48 @@ class PageController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        $request->validate([
+            'name' => 'required|array',
+            'name.*' => 'nullable|string',
+            'content' => 'required|array',
+            'content.*' => 'nullable|string',
+            // السماح بالقيمة 0 أو أن يكون parent_id موجود في الصفحات
+            'parent_id' => [
+                'required',
+                'integer',
+                function ($attribute, $value, $fail) {
+                    if ($value != 0 && !\App\Models\Page::where('id', $value)->exists()) {
+                        $fail('الصفحة الأب المحددة غير موجودة.');
+                    }
+                }
+            ],
+            'ordering' => 'nullable|integer|min:0',
+            'useful_links' => 'nullable|integer|min:0',
+            'top_menu' => 'nullable|boolean',
+        ]);
 
-        $data['title'] = '';
-        $data['useful_links'] = $data['useful_links'] ?? 0;
-        $data['top_menu'] = $data['top_menu'] ?? 0;
-        $data['ordering'] = $data['ordering'] ?? 1;
-        $data['parent_id'] = $request->parent_id;
-        $data['tr_name'] = $data['tr_name'] ?? '';
-        $data['tr_content'] = $data['tr_content'] ?? '';
-        $data['sw_name'] = $data['sw_name'] ?? '';
-        $data['sw_content'] = $data['sw_content'] ?? '';
-
-        $languages = Language::where('active', 1)->get();
-        foreach ($languages as $language) {
-
-            $nameField = $language->shortcut . '_name';
-            $contentField = $language->shortcut . '_content';
-            $data[$nameField] = $request->$nameField;
-            $data[$contentField] = $request->$contentField;
-
-        }
+        $data = [
+            'name' => $request->input('name'),
+            'content' => $request->input('content'),
+            'parent_id' => $request->input('parent_id') == 0 ? null : $request->input('parent_id'),
+            'ordering' => $request->input('ordering', 1),
+            'useful_links' => $request->input('useful_links', 0),
+            'top_menu' => $request->boolean('top_menu'),
+        ];
 
         Page::create($data);
 
-        return redirect()->route('admin.pages.index')->with('success', 'Page created successfully');
+        return redirect()->route('admin.pages.index')->with('success', 'تمت إضافة الصفحة بنجاح');
     }
+
 
 
     public function edit($id)
     {
-        $page = Page::findOrFail($id);
-        $languages = Language::all();
-        $parentPages = Page::where('id', '!=', $id)->get();
+        $page = Page::findOrFail($id); // اجلب الصفحة بناءً على الـ ID
+        $languages = Language::getActiveLanguages(); // اجلب اللغات النشطة
+        $parentPages = Page::where('id', '!=', $id)->get(); // استثني الصفحة الحالية من قائمة الآباء
+
 
         return view('admin.settings.pagesEdit', [
             'page' => $page,
@@ -99,23 +108,43 @@ class PageController extends Controller
     {
         $page = Page::findOrFail($id);
 
-        // التحقق من البيانات
+        // اجلب اللغات الفعالة (يمكن استخدام نفس الطريقة التي تستخدمها في الـ edit)
+        $languages = Language::getActiveLanguages();
+
+        // قواعد التحقق
         $rules = [
-            'parent_id' => 'nullable|exists:pages,id',
+            // parent_id يمكن أن يكون 0 (يعني لا أب) أو موجود في الصفحات مع استثناء الصفحة الحالية
+            'parent_id' => [
+                'required',
+                'integer',
+                function ($attribute, $value, $fail) use ($id) {
+                    if ($value != 0 && !\App\Models\Page::where('id', $value)->where('id', '!=', $id)->exists()) {
+                        $fail('الصفحة الأب المحددة غير موجودة أو غير صالحة.');
+                    }
+                },
+            ],
         ];
 
-        // إضافة قواعد التحقق الديناميكية للغات
-        foreach (Language::all() as $language) {
-            $rules[$language->shortcut . '_name'] = 'required|string|max:255';
-            $rules[$language->shortcut . '_content'] = 'nullable|string';
+        // إضافة قواعد التحقق لكل لغة
+        foreach ($languages as $language) {
+            $rules['name.' . $language->shortcut] = 'required|string|max:255';
+            $rules['content.' . $language->shortcut] = 'nullable|string';
         }
 
         $validated = $request->validate($rules);
 
-        $page->update($validated);
+        $parent_id = $validated['parent_id'] == 0 ? null : $validated['parent_id'];
+
+        // تحديث الصفحة
+        $page->update([
+            'parent_id' => $parent_id,
+            'name' => $validated['name'],
+            'content' => $validated['content'],
+        ]);
 
         return redirect()->route('admin.pages.index')->with('success', 'تم تحديث الصفحة بنجاح.');
     }
+
 
     // حذف الصفحة
     public function destroy(Page $page)

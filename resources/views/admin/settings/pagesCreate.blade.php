@@ -10,62 +10,72 @@
             direction: rtl;
             text-align: right;
         }
+        .text-danger {
+            color: #dc3545;
+            font-size: 0.9em;
+        }
     </style>
 @endsection
 
 @section('content')
     <div class="rtl-content">
-        <h4>إضافة صفحة جديدة</h4>
+        <br>
+        <h4>{{ __('menu.add_page') }}</h4>
 
         <form method="POST" action="{{ route('admin.pages.store') }}" id="form" enctype="multipart/form-data">
             @csrf
 
             <table class="table">
-                <!-- الحقل الخاص بالصفحة الرئيسية -->
                 <tr>
                     <td>الصفحة الأب</td>
                     <td>
-                        <select name="parent_id" class="form-control">
-                            <option value="0">لا يوجد أب</option>
+                        <select name="parent_id" class="form-control @error('parent_id') is-invalid @enderror">
+                            <option value="0" {{ old('parent_id') == 0 ? 'selected' : '' }}>لا يوجد أب</option>
                             @foreach ($pages as $page)
-                                <option value="{{ $page->id }}">{{ $page->ar_name }}</option>
+                                <option value="{{ $page->id }}" {{ old('parent_id') == $page->id ? 'selected' : '' }}>
+                                    {{ $page->getTranslation('name', 'ar') }}
+                                </option>
                             @endforeach
                         </select>
+                        @error('parent_id')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
 
-                <!-- الحقول الخاصة بالأسماء -->
                 @foreach ($languages as $language)
-                    <?php $name = $language->shortcut . '_name'; ?>
                     <tr>
                         <td>اسم الصفحة ({{ $language->name }})</td>
                         <td>
                             <input type="text"
-                                   name="{{ $name }}"
-                                   class="form-control"
-                                   value="{{ old($name) }}">
+                                   name="name[{{ $language->shortcut }}]"
+                                   class="form-control @error('name.' . $language->shortcut) is-invalid @enderror"
+                                   value="{{ old('name.' . $language->shortcut) }}">
+                            @error('name.' . $language->shortcut)
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </td>
                     </tr>
                 @endforeach
 
-                <!-- الحقول الخاصة بالمحتوى -->
                 @foreach ($languages as $index => $language)
-                    <?php $content = $language->shortcut . '_content'; ?>
                     <tr>
                         <td>محتوى الصفحة ({{ $language->name }})</td>
                         <td>
                             <textarea id="summernote{{ $index + 1 }}"
-                                      name="{{ $content }}"
-                                      class="form-control">{{ old($content) }}</textarea>
+                                      name="content[{{ $language->shortcut }}]"
+                                      class="form-control @error('content.' . $language->shortcut) is-invalid @enderror">{{ old('content.' . $language->shortcut) }}</textarea>
+                            @error('content.' . $language->shortcut)
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </td>
                     </tr>
                 @endforeach
 
-                <!-- زر الحفظ -->
                 <tr>
                     <td colspan="2" class="text-right">
                         <button type="submit" class="btn btn-success">
-                            <i class="fas fa-save"></i> {{ __('messages.add') }}
+                            <i class="fas fa-save"></i> {{ __('menu.add') }}
                         </button>
                     </td>
                 </tr>

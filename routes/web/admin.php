@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Settings\LanguageController;
 use App\Http\Controllers\Admin\Settings\PageController;
 use App\Http\Controllers\Admin\Settings\PaymentController;
 use App\Http\Controllers\Admin\Settings\ReviewController;
+use App\Http\Controllers\Admin\Settings\ServiceController;
 use App\Http\Controllers\Admin\Settings\SliderController;
 use App\Http\Controllers\Admin\Settings\StoryController;
 use App\Http\Controllers\Admin\Settings\TopMenuController;
@@ -126,7 +127,6 @@ Route::prefix('/admin')->group(function () {
 
         Route::prefix('/reviews')->group(function () {
             Route::get('/', [ReviewController::class, 'index'])->name('admin.reviews.index');
-
             Route::delete('/{id}', [ReviewController::class, 'destroy'])->name('admin.reviews.delete');
         });
 
@@ -209,6 +209,15 @@ Route::prefix('/admin')->group(function () {
 
             Route::patch('/{id}/toggle-main', [LanguageController::class, 'toggleMain'])
                 ->name('admin.settings.languages.toggle.main');
+        });
+
+        Route::prefix('services')->group(function () {
+            Route::get('/', [ServiceController::class, 'index'])->name('admin.services.index');
+            Route::get('/create', [ServiceController::class, 'create'])->name('admin.services.create');
+            Route::post('/', [ServiceController::class, 'store'])->name('admin.services.store');
+            Route::get('/{service}/edit', [ServiceController::class, 'edit'])->name('admin.services.edit');
+            Route::put('/{service}', [ServiceController::class, 'update'])->name('admin.services.update');
+            Route::delete('/{id}', [ServiceController::class, 'destroy'])->name('admin.services.destroy');
         });
     });
 

@@ -13,68 +13,74 @@
             border-radius: 4px;
             padding: 10px;
         }
+
+        .invalid-feedback {
+            display: block;
+            color: #dc3545;
+        }
     </style>
 @endsection
 
 @section('content')
     <div class="rtl-content">
-        <h4>تعديل الصفحة: {{ $page->ar_name }}</h4>
+        <br>
+        <h4>{{ __('menu.edit_page') }}</h4>
 
         <form action="{{ route('admin.pages.update', $page->id) }}" method="POST">
             @csrf
             @method('PUT')
 
             <table class="table table-bordered">
-                <!-- الحقول الخاصة بالأسماء -->
-                @foreach ($languages as $language)
-                    <tr>
-                        <td>اسم الصفحة ({{ $language->name }})</td>
-                        <td>
-                            <input type="text"
-                                   name="{{ $language->shortcut }}_name"
-                                   value="{{ old($language->shortcut . '_name', $page[$language->shortcut . '_name']) }}"
-                                   class="form-control @error($language->shortcut . '_name') is-invalid @enderror">
-                            @error($language->shortcut . '_name')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </td>
-                    </tr>
-                @endforeach
 
-                <!-- الحقل الخاص بالصفحة الرئيسية -->
                 <tr>
                     <td>الصفحة الأب</td>
                     <td>
                         <select name="parent_id" class="form-control @error('parent_id') is-invalid @enderror">
-                            <option value="0">لا يوجد أب</option>
+                            <option value="0" {{ old('parent_id', $page->parent_id ?? 0) == 0 ? 'selected' : '' }}>لا
+                                يوجد أب</option>
                             @foreach ($parentPages as $parent)
-                                <option value="{{ $parent->id }}" {{ $page->parent_id == $parent->id ? 'selected' : '' }}>
-                                    {{ $parent->ar_name }}
+                                <option value="{{ $parent->id }}"
+                                    {{ old('parent_id', $page->parent_id) == $parent->id ? 'selected' : '' }}>
+                                    {{ $parent->getTranslation('name', 'ar') }}
                                 </option>
                             @endforeach
                         </select>
+
                         @error('parent_id')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </td>
                 </tr>
 
-                <!-- الحقول الخاصة بالمحتوى -->
+                {{-- أسماء الصفحات --}}
                 @foreach ($languages as $language)
                     <tr>
-                        <td>محتوى الصفحة ({{ $language->name }})</td>
+                        <td>اسم الصفحة ({{ $language->name }})</td>
                         <td>
-                            <textarea id="{{ $language->shortcut }}_content"
-                                      name="{{ $language->shortcut }}_content"
-                                      class="form-control @error($language->shortcut . '_content') is-invalid @enderror">
-                                {{ old($language->shortcut . '_content', $page[$language->shortcut . '_content']) }}
-                            </textarea>
-                            @error($language->shortcut . '_content')
+                            <input type="text" name="name[{{ $language->shortcut }}]"
+                                value="{{ old('name.' . $language->shortcut, $page->name[$language->shortcut] ?? '') }}"
+                                class="form-control @error('name.' . $language->shortcut) is-invalid @enderror">
+                            @error('name.' . $language->shortcut)
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </td>
                     </tr>
                 @endforeach
+
+                {{-- محتوى الصفحات --}}
+                @foreach ($languages as $language)
+                    <tr>
+                        <td>محتوى الصفحة ({{ $language->name }})</td>
+                        <td>
+                            <textarea id="content_{{ $language->shortcut }}" name="content[{{ $language->shortcut }}]"
+                                class="form-control @error('content.' . $language->shortcut) is-invalid @enderror">{{ old('content.' . $language->shortcut, $page->content[$language->shortcut] ?? '') }}</textarea>
+                            @error('content.' . $language->shortcut)
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </td>
+                    </tr>
+                @endforeach
+
             </table>
 
             <div class="text-right mt-3">
@@ -94,9 +100,9 @@
     <script>
         @foreach ($languages as $language)
             ClassicEditor
-                .create(document.querySelector('#{{ $language->shortcut }}_content'), {
-                    language: '{{ $language->shortcut === "ar" ? "ar" : "en" }}',
-                    direction: '{{ $language->shortcut === "ar" ? "rtl" : "ltr" }}'
+                .create(document.querySelector('#content_{{ $language->shortcut }}'), {
+                    language: '{{ $language->shortcut === 'ar' ? 'ar' : 'en' }}',
+                    direction: '{{ $language->shortcut === 'ar' ? 'rtl' : 'ltr' }}'
                 })
                 .catch(error => {
                     console.error(error);

@@ -16,4 +16,10 @@ class Language extends Model
         'active' => false,
         'main' => false,
     ];
+
+
+    public static function getActiveLanguages()
+    {
+        return self::where('active', true)->get();
+    }
 }

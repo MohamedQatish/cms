@@ -13,7 +13,7 @@ class InfoController extends Controller
     public function index()
     {
         $settings = Setting::orderBy('ordering')->get();
-        $languages = Language::all();
+        $languages = Language::getActiveLanguages();
         return view('admin.settings.info', [
             'languages' => $languages,
             'settings' => $settings,
@@ -23,7 +23,6 @@ class InfoController extends Controller
             'scrollspy' => 0,
             'simplePage' => 0
         ]);
-
     }
 
 
