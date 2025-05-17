@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use App\Models\Service;
 
 class ServicesSeeder extends Seeder
 {
@@ -13,47 +14,87 @@ class ServicesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('services')->insert([
+        $services = [
             [
-                'icon' => 'frontend/seed/services/icon_services.png',
-                'ar_name' => 'بناء المواقع الالكترونية',
-                'en_name' => 'Building websites',
-                'fr_name' => 'Erstellen von Websites',
-                'ar_content' => 'خدمة نقدم نحن احترافية لإنشاء المواقع الإلكترونية، بتصاميم متميزة وتجربة مستخدم سلسة تلبي احتياجاتك وتحقق أهدافك الرقمية بكفاءة عالية',
-                'en_content' => 'We provide a professional service for creating websites, with distinct designs and a smooth user experience that meets your needs and achieves your digital goals with high efficiency.',
-                'fr_content' => 'Wir bieten einen professionellen Service für die Erstellung von Websites mit ausgeprägtem Design und einem reibungslosen Benutzererlebnis, der Ihren Anforderungen entspricht und Ihre digitalen Ziele mit hoher Effizienz erreicht.',
-                'background_image' => 'images/1x1/us.svg',
-                'link' => 'https://www.example.com/building-websites',
-                'de_name' => 'Webseiten erstellen',
-                'de_content' => 'Wir bieten einen professionellen Service zur Erstellung von Websites mit einzigartigem Design und einem reibungslosen Benutzererlebnis.',
+                'name' => [
+                    'ar' => 'بناء المواقع الإلكترونية',
+                    'en' => 'Website Development',
+                    'de' => 'Webseiten-Erstellung',
+                ],
+                'content' => [
+                    'ar' => 'نقوم ببناء مواقع إلكترونية احترافية مخصصة لتلبية احتياجاتك.',
+                    'en' => 'We build professional websites tailored to your needs.',
+                    'de' => 'Wir erstellen professionelle Websites, die auf Ihre Bedürfnisse zugeschnitten sind.',
+                ],
+                'icon' => 'frontend/seed/services/web.png',
+                'background_image' => 'images/1x1/web.svg',
+                'link' => 'https://example.com/websites',
             ],
             [
-                'icon' => 'frontend/seed/services/icon_services.png',
-                'ar_name' => 'التسويق الرقمي',
-                'en_name' => 'Digital marketing',
-                'fr_name' => 'Digitales Marketing',
-                'ar_content' => 'نقدم خدمات الحملات الإعلانية المبتكرة والشاملة. من الاستراتيجية إلى التصميم، نحن هنا لتحقيق أهدافك الإعلانية بكفاءة وفعالية.',
-                'en_content' => 'We provide innovative and comprehensive advertising campaign services. From strategy to design, we are here to achieve your advertising goals efficiently and effectively.',
-                'fr_content' => 'Wir bieten innovative und umfassende Werbekampagnendienste. Von der Strategie bis zum Design sind wir für Sie da, um Ihre Werbeziele effizient und effektiv zu erreichen.',
+                'name' => [
+                    'ar' => 'التسويق الرقمي',
+                    'en' => 'Digital Marketing',
+                    'de' => 'Digitales Marketing',
+                ],
+                'content' => [
+                    'ar' => 'نقدم حملات تسويق رقمي استراتيجية تضمن نتائج ملموسة.',
+                    'en' => 'We offer strategic digital marketing campaigns with measurable results.',
+                    'de' => 'Wir bieten strategische digitale Marketingkampagnen mit messbaren Ergebnissen.',
+                ],
+                'icon' => 'frontend/seed/services/marketing.png',
                 'background_image' => 'images/1x1/marketing.svg',
-                'link' => 'https://www.example.com/digital-marketing',
-                'de_name' => 'Digitales Marketing',
-                'de_content' => 'Wir bieten innovative und umfassende Werbekampagnendienste. Von der Strategie bis zum Design sind wir für Sie da, um Ihre Werbeziele effizient zu erreichen.',
+                'link' => 'https://example.com/marketing',
             ],
             [
-                'icon' => 'frontend/seed/services/icon_services.png',
-                'ar_name' => 'SEO',
-                'en_name' => 'SEO',
-                'fr_name' => 'SEO',
-                'ar_content' => 'ابدأ رحلتك التجارية عبر الإنترنت اليوم مع متجر إلكتروني متكامل وجاهز للاستخدام. نقدم لك منصة سهلة الاستخدام، تصميم جذاب، وخدمات تسويقية متكاملة. انطلق نحو النجاح معنا.',
-                'en_content' => 'Begin your online business journey today with a complete, ready-to-use online store. We provide you with a user-friendly platform, attractive design, and integrated marketing services. Let\'s head towards success together.',
-                'fr_content' => 'Beginnen Sie noch heute Ihre Online-Geschäftsreise mit einem vollständigen, gebrauchsfertigen Online-Shop. Wir bieten Ihnen eine benutzerfreundliche Plattform, attraktives Design und integrierte Marketingdienstleistungen. Gehen Sie mit uns auf Erfolgskurs.',
+                'name' => [
+                    'ar' => 'تحسين محركات البحث (SEO)',
+                    'en' => 'Search Engine Optimization',
+                    'de' => 'Suchmaschinenoptimierung',
+                ],
+                'content' => [
+                    'ar' => 'اجعل موقعك في المراتب الأولى على جوجل بفضل خبراتنا في SEO.',
+                    'en' => 'Rank higher on Google with our expert SEO services.',
+                    'de' => 'Erreichen Sie bessere Google-Rankings mit unserem SEO-Know-how.',
+                ],
+                'icon' => 'frontend/seed/services/seo.png',
                 'background_image' => 'images/1x1/seo.svg',
-                'link' => 'https://www.example.com/seo-services',
-                'de_name' => 'SEO-Dienste',
-                'de_content' => 'Beginnen Sie noch heute Ihre Online-Geschäftsreise mit einem vollständigen, gebrauchsfertigen Online-Shop und integrierten SEO-Diensten.',
+                'link' => 'https://example.com/seo',
             ],
-        ]);
+            [
+                'name' => [
+                    'ar' => 'إدارة المحتوى',
+                    'en' => 'Content Management',
+                    'de' => 'Inhaltsverwaltung',
+                ],
+                'content' => [
+                    'ar' => 'نقوم بإعداد وجدولة المحتوى وتحسينه ليتناسب مع جمهورك.',
+                    'en' => 'We plan, schedule, and optimize content to engage your audience.',
+                    'de' => 'Wir planen, erstellen und optimieren Inhalte für Ihr Publikum.',
+                ],
+                'icon' => 'frontend/seed/services/content.png',
+                'background_image' => 'images/1x1/content.svg',
+                'link' => 'https://example.com/content',
+            ],
+            [
+                'name' => [
+                    'ar' => 'تصميم الجرافيك',
+                    'en' => 'Graphic Design',
+                    'de' => 'Grafikdesign',
+                ],
+                'content' => [
+                    'ar' => 'تصاميم مبهرة تعكس هوية علامتك التجارية بشكل احترافي.',
+                    'en' => 'Stunning designs that reflect your brand identity professionally.',
+                    'de' => 'Beeindruckende Designs, die Ihre Markenidentität professionell widerspiegeln.',
+                ],
+                'icon' => 'frontend/seed/services/design.png',
+                'background_image' => 'images/1x1/design.svg',
+                'link' => 'https://example.com/design',
+            ],
+        ];
+
+        foreach ($services as $service) {
+            Service::create($service);
+        }
 
     }
 }

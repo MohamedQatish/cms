@@ -1,4 +1,8 @@
-   <!-- Start Navbar Area -->
+@php
+    $currentLang = $languages->firstWhere('shortcut', app()->getLocale());
+@endphp
+
+<!-- Start Navbar Area -->
    <div class="navbar-area">
     <div class="mobile-responsive-nav">
         <div class="container">
@@ -301,6 +305,26 @@
                                 </li>
                             </ul>
                         </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <img src="{{ asset('frontend/images/languages/' . $currentLang->flag) }}" alt="{{ $currentLang->name }}" width="20">
+                                {{ $currentLang->name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach($languages as $lang)
+                                    <li class="dropdown-item">
+                                        <a href="{{ route('language.change', $lang->shortcut) }}" class="d-flex align-items-center gap-1">
+                                            <img src="{{ asset('frontend/images/languages/' . $lang->flag) }}" alt="{{ $lang->name }}" width="20">
+
+                                            {{ $lang->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+
 
                         <li class="nav-item">
                             <a href="contact.html" class="nav-link">

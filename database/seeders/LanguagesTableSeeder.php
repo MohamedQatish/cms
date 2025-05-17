@@ -17,7 +17,7 @@ class LanguagesTableSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'العربية',
-                'flag' => 'languages/ar.png',
+                'flag' => 'ar.svg',
                 'active' => true,
                 'shortcut' => 'ar',
                 'main' => true,
@@ -25,7 +25,7 @@ class LanguagesTableSeeder extends Seeder
             [
                 'id' => 2,
                 'name' => 'English',
-                'flag' => 'languages/en.png',
+                'flag' => 'en.svg',
                 'active' => true,
                 'shortcut' => 'en',
                 'main' => false,
@@ -33,7 +33,7 @@ class LanguagesTableSeeder extends Seeder
             [
                 'id' => 3,
                 'name' => 'Deutsch',
-                'flag' => 'languages/de.png',
+                'flag' => 'de.svg',
                 'active' => true,
                 'shortcut' => 'de',
                 'main' => false,
@@ -41,7 +41,7 @@ class LanguagesTableSeeder extends Seeder
             [
                 'id' => 4,
                 'name' => 'Türkçe',
-                'flag' => 'languages/tr.png',
+                'flag' => 'tr.svg',
                 'active' => false,
                 'shortcut' => 'tr',
                 'main' => false,
@@ -49,7 +49,7 @@ class LanguagesTableSeeder extends Seeder
             [
                 'id' => 5,
                 'name' => 'Svenska',
-                'flag' => 'languages/sw.png',
+                'flag' => 'sw.png',
                 'active' => false,
                 'shortcut' => 'sw',
                 'main' => false,
